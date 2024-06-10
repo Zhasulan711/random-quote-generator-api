@@ -7,5 +7,5 @@ export type Quote = {
   id: number;
   author: string;
   content: string;
+  avatarPath: string;
 };
-

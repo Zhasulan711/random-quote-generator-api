@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv";
 import express from "express";
+import cors from "cors";
 import { quoteRouter } from "./quote/quote.router";
 
 dotenv.config();
@@ -11,7 +12,9 @@ if (!process.env.PORT) {
 const PORT: number = parseInt(process.env.PORT as string, 10);
 const app = express();
 
+app.use(cors());
 app.use(express.json());
+app.use("/images", express.static("./src/storage/images"));
 app.use("/api/quotes", quoteRouter);
 
 app.listen(PORT, () => {
